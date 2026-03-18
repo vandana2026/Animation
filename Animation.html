@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:white;
+font-family:Arial;
+}
+
+
+
+.box{
+width:100%;
+height:120px;
+background:#ef5b57;
+position:relative;
+display:flex;
+align-items:center;
+overflow:hidden;
+}
+
+.text{
+position:absolute;
+left:0;
+color:white;
+font-size:42px;
+animation:moveText 4s forwards;
+}
+
+@keyframes moveText{
+0%{ left:0; }
+100%{
+left:50%;
+transform:translateX(-50%);
+}
+}
+
+
+
+.container{
+width:100%;
+height:120px;
+position:relative;
+display:none;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+
+
+.circle{
+width:60px;
+height:60px;
+border-radius:50%;
+position:absolute;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+font-weight:bold;
+}
+
+.s{
+background:red;
+color:white;
+left:-80px;
+animation:moveS 1s forwards;
+}
+
+.f{
+background:blue;
+color:white;
+right:-80px;
+animation:moveF 1s forwards;
+}
+
+
+
+.redbox{
+position:absolute;
+width:100%;
+height:120px;
+background:#ef5b57;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+opacity:0;
+animation:showBox .6s forwards;
+animation-delay:1s;
+}
+
+
+
+.finalS{
+font-size:80px;
+color:white;
+font-weight:bold;
+transform:scale(0);
+
+text-shadow:
+0 4px 0 #c53d39,
+0 8px 15px rgba(0,0,0,0.4);
+
+animation:zoomPop 1.2s forwards;
+animation-delay:1.2s;
+}
+
+
+
+@keyframes moveS{
+to{
+left:50%;
+transform:translateX(-70px);
+}
+}
+
+@keyframes moveF{
+to{
+right:50%;
+transform:translateX(70px);
+}
+}
+
+@keyframes showBox{
+to{ opacity:1; }
+}
+
+
+
+@keyframes zoomPop{
+
+0%{
+transform:scale(0);
+}
+
+50%{
+transform:scale(1.5);
+}
+
+70%{
+transform:scale(1.2);
+}
+
+100%{
+transform:scale(8);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="box" id="energyBox">
+<div class="text">Energy</div>
+</div>
+
+<div class="container" id="sfAnim">
+
+<div class="circle s">S</div>
+<div class="circle f">F</div>
+
+<div class="redbox">
+<div class="finalS">S</div>
+</div>
+
+</div>
+
+
+<div class="box" id="energyBox2" style="display:none;">
+<div class="text" style="animation-delay:0s;">Energy</div>
+</div>
+
+<script>
+
+
+function runSequence(){
+ 
+  setTimeout(function(){
+    document.getElementById("energyBox").style.display="none";
+    document.getElementById("sfAnim").style.display="flex";
+  },4000);
+}
+  
+  setTimeout(function(){
+    document.getElementById("sfAnim").style.display="none";
+    document.getElementById("energyBox2").style.display="flex";
+  },4000 + 1600 + 1200);
+
+runSequence();
+
+</script>
+
+</body>
+</html>
